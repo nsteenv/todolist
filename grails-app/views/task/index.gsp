@@ -7,8 +7,8 @@
 <body>
 <h1>Task List</h1>
 <form ng-submit="addTask()" class="form-inline">
-    <input type="text" ng-model="taskTitle" size="30" placeholder="What do you have to do?" ng-required>
-    <input class="btn btn-primary" type="submit" value="add">
+    <input id="addText" type="text" ng-model="taskTitle" size="30" placeholder="What do you have to do?" ng-required>
+    <input id="addButton" class="btn btn-primary" type="submit" value="add">
 </form>
 <h2>Todo</h2>
 <ul>

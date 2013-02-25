@@ -19,27 +19,19 @@
         setup.scope.controller = 'task';
         setup.grails.getResource(setup.scope).get();
       });
-      return it('should call url without controller or id', function() {
+      it('should call url without controller or id', function() {
         setup.httpBackend.expectGET('/todolist').respond();
         setup.grails.getResource(setup.scope).get();
       });
     });
   })
   describe('Todolist controllers', function() {
-    beforeEach(function() {
-      return this.addMatchers({
-        toEqualData: function(expected) {
-          return angular.equals(this.actual, expected);
-        }
-      });
-    });
     beforeEach(module('todolistServices'));
     beforeEach(inject(function($rootScope) {
       $rootScope.controller = 'task';
     }));
-    describe('TodoListCtrl', function() {
-      var setup;
-      setup = {};
+    describe('TaskListCtrl', function() {
+      var setup = {};
       beforeEach(inject(function(_$httpBackend_, $rootScope, $controller, $rootElement) {
         setup.httpBackend = _$httpBackend_;
         setup.httpBackend.expectGET('/todolist/task/').respond([
@@ -53,14 +45,14 @@
           }
         ]);
         setup.scope = $rootScope.$new();
-        return setup.ctrl = $controller(TaskListCtrl, {
+        setup.ctrl = $controller(TaskListCtrl, {
           $scope: setup.scope
         });
       }));
       it('should create "tasks" model with 2 tasks fetched from xhr', function() {
         expect(setup.scope.tasks).toEqualData([]);
         setup.httpBackend.flush();
-        return expect(setup.scope.taks).toEqualData([
+        expect(setup.scope.taks).toEqualData([
             {
                 title: 'todo1',
                 done: false
@@ -70,6 +62,17 @@
                 done: false
             }
         ]);
+        it('should add a new task when the button add is clicked', function() {
+            expect(setup.scope.tasks).toEqualData([]);
+            input('addText').enter('todo1');
+            element('addButton').click();
+            expect(setup.scope.taks).toEqualData([
+                {
+                    title: 'todo1',
+                    done: false
+                }
+            ]);
+        })
       });
     });
   });
