@@ -73,6 +73,17 @@
                 }
             ]);
         })
+          it('should remove a task when the button remove is clicked', function() {
+              expect(setup.scope.tasks).toEqualData([]);
+              setup.httpBackend.flush();
+              element('removeButton0').click();
+              expect(setup.scope.taks).toEqualData([
+                  {
+                      title: 'todo2',
+                      done: false
+                  }
+              ]);
+          })
       });
     });
   });

@@ -13,8 +13,9 @@
 <h2>Todo</h2>
 <ul>
     <li ng-repeat="task in tasks">
-            <input type="checkbox" ng-model="task.done">
-            <span class="done-{{task.done}}">{{task.title}}</span>
+        <input type="checkbox" ng-model="task.done">
+        <span class="done-{{task.done}}">{{task.title}}</span>
+        <img id="removeButton{{index}}" class="icon-remove" ng-click="delTask(task)"/>
     </li>
 </ul>
 </body>
