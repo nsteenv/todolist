@@ -3,7 +3,7 @@ modules = {
     application {
         dependsOn 'jquery, angularResource, bootstrap'
         resource url: 'css/application.css'
-        resource url: 'js/angular/app/application.js'
+        resource url: 'js/angular/app/angular.js'
     }
 
     bootstrap {

@@ -8,7 +8,7 @@ class TaskController {
 
     static final int SC_UNPROCESSABLE_ENTITY = 422
 
-    def index() { }
+    def index() { [ngController:"TaskListCtrl"] }
 
     def list() {
 		render Task.list(params) as JSON
