@@ -37,10 +37,6 @@
             })
         }
 
-        $scope.updateTask = function (task){
-            Task.put(task);
-        }
-
     };
 
     angular.module(appName, ['todolistServices']);
