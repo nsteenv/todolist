@@ -11,7 +11,7 @@
         };
     });
 
-    TaskListCtrl = function($scope, Grails) {
+    TaskListCtrl = function($scope, Grails, $http) {
         var Task = Grails.getResource($scope);
 
         $scope.tasks = Task.query()
@@ -35,6 +35,10 @@
                 var index = $scope.tasks.indexOf(task);
                 $scope.tasks.splice(index,1);
             })
+        }
+
+        $scope.updateTask = function (task){
+            $http.put("/todolist/task",task);
         }
 
     };
